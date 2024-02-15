@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import CartaoFormulario from './CartaoFormulario';
 import BoletoFormulario from './BoletoFormulario';
-import { isFullNameValid, areEmailsMatching, isEmailValid, formatCPF, isCPFValid, formatCellphone, isCellphoneValid, sanitizeString, isCreditCardNumberValid } from '../utils/validation';
+import { isFullNameValid, areEmailsMatching, isEmailValid, isCPFValid, isCellphoneValid, isCreditCardNumberValid } from '../utils/validation';
 import { CardData, FormData } from '../types/index';
 
 Modal.setAppElement('#root');
 
 const Form = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [formReady, setFormReady] = useState(false);
-  const [cardDataReady, setCardDataReady] = useState(false)
   const [cardFieldsFilled, setCardFieldsFilled] = useState(false);
   const [errorModalIsOpen, setErrorModalIsOpen] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState('');

@@ -13,18 +13,6 @@ const CartaoFormulario = ({ onDataChange }: CartaoFormularioProps) => {
   const [cvv, setCVV] = useState('');
   const [parcelas, setParcelas] = useState(1);
 
-  const getCardData = (): CardData | null => {
-    if (cardNumber && expiryMonth && expiryYear && cvv && parcelas) {
-      return {
-        cardNumber,
-        expiryMonth,
-        expiryYear,
-        cvv,
-        parcelas,
-      };
-    }
-    return null;
-  };
 
   useEffect(() => {
     onDataChange({
@@ -34,7 +22,7 @@ const CartaoFormulario = ({ onDataChange }: CartaoFormularioProps) => {
       cvv,
       parcelas,
     });
-  }, [cardNumber, expiryMonth, expiryYear, cvv, parcelas]);
+  }, [cardNumber, expiryMonth, expiryYear, cvv, parcelas, onDataChange]);
 
   const precoAVista = 6000; // Substitua pelo preço à vista da sua compra
 
@@ -55,18 +43,8 @@ const CartaoFormulario = ({ onDataChange }: CartaoFormularioProps) => {
     setCardNumber(formattedInput);
   };
 
-  const isExpiryMonthValid = (month: string): boolean => {
-    return /^\d{1,2}$/.test(month) && parseInt(month, 10) >= 1 && parseInt(month, 10) <= 12;
-  };
 
-  const isExpiryYearValid = (year: string): boolean => {
-    const currentYear = new Date().getFullYear();
-    return /^\d{4}$/.test(year) && parseInt(year, 10) >= currentYear && parseInt(year, 10) <= currentYear + 14;
-  };
 
-  const isCVVValid = (cvv: string): boolean => {
-    return /^\d{3}$/.test(cvv);
-  };
 
   const handleParcelasChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setParcelas(parseInt(event.target.value, 10));
