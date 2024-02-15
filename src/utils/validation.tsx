@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // src/utils/validation.tsx
-import { FormData as FormDataLocal } from '../types/index';
 
 export const isFullNameValid = (fullName: string): boolean => {
   const nameParts = fullName.split(' ');
@@ -115,19 +114,4 @@ export const isCreditCardNumberValid = (cardNumber: string): boolean => {
 
   // O número é válido se a soma é um múltiplo de 10
   return sum % 10 === 0;
-};
-
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const phoneRegex = /^\([1-9]{2}\)\s?[9]?[6-9]\d{3}-\d{4}$/;
-
-type FormData = {
-  fullName: string;
-  email: string;
-  confirmEmail: string;
-  cpf: string;
-  cellphone: string;
 };
